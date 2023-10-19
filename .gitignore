@@ -1,0 +1,21 @@
+.idea
+
+### Java ###
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+### Gradle ###
+/gradle/
+.gradle
+/build/
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# Property files #
+src/test/resources/integration.properties
+src/main/resources/application.properties

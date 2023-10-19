@@ -1,0 +1,86 @@
+interface Content {
+    id: Int!
+    contentType: String!
+}
+
+type Definition implements Content {
+    id: Int!
+    contentType: String!
+    term: String!
+    explanation: String!
+}
+
+type Fact implements Content {
+    id: Int!
+    contentType: String!
+    fact: String!
+}
+
+type PageContent {
+    contentNumber: Int
+    content: Content
+    isEditable: Boolean!
+}
+
+type Page {
+    id: Int!
+    pageNumber: Int
+    lesson: Lesson
+    pageContent: [PageContent]
+}
+
+type Lesson {
+    id: Int!
+    name: String
+    subject: Subject
+    lessonNumber: Int
+    pages: [Page]
+}
+
+type Subject {
+    id: Int!
+    name: String!
+    summary: String
+    subjectNumber: Int
+    lessons: [Lesson]
+}
+
+type Course {
+    id: Int!
+    name: String!
+    maxAttendees: Int
+    summary: String
+    subjects: [Subject]
+}
+
+#type Mutation {
+#
+#    updatePage($page: Page!) {
+#        id
+#        pageNumber
+#        lesson
+#        pageContent
+#    }
+#}
+
+type RootQueries {
+    allCourses: [Course]
+    findCourseById(id: ID!): Course
+    findCoursesByName(name: String!): [Course]
+    findLessonById(id: ID!): Lesson
+    findLessonsByName(name: String!): [Lesson]
+    allLessons: [Lesson]
+    getContentById: Content
+}
+
+type RootMutations {
+    updatePageContent(contentId: String, fact: String): PageContent!
+    updateFact(contentId: String, fact: String): Fact!
+    updateDefinition(contentId: String, term: String, explanation: String): Definition!
+}
+
+schema {
+    query: RootQueries
+    mutation: RootMutations
+}
+

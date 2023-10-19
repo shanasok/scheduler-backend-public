@@ -1,0 +1,67 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.3.21'
+    id 'org.springframework.boot' version '2.2.5.RELEASE'
+
+}
+
+group 'ClassScheduler'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+test {
+    testLogging {
+        exceptionFormat = 'full'
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.2.5.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.2.5.RELEASE'
+    compileOnly 'org.springframework.boot:spring-boot-starter-data-rest:2.2.5.RELEASE'
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools:2.2.5.RELEASE'
+    runtimeOnly 'mysql:mysql-connector-java:8.0.19'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:2.2.5.RELEASE'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.2.5.RELEASE'
+
+    compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '2.1.10:RELEASE'
+    testCompile group: 'com.h2database', name: 'h2', version: '1.4.199'
+
+    implementation 'com.graphql-java:graphql-java:2020-02-29T01-57-30-987fd78'
+    implementation 'com.graphql-java:graphql-java-spring-boot-starter-webmvc:2019-06-24T11-47-27-31ab4f9'
+    implementation 'com.google.guava:guava:26.0-jre'
+    implementation 'com.graphql-java:graphql-java-tools:5.2.4'
+
+    compile group: 'org.springframework.security', name: 'spring-security-config', version: '5.3.2.RELEASE'
+    compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.4.1.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-web', version: '5.3.2.RELEASE'
+
+    implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
+
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}

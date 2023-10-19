@@ -1,0 +1,13 @@
+type TestQueries {
+    allTestData: [TestInfo]
+    findById(id: ID!): TestInfo
+}
+
+#schema {
+#    query: TestQueries
+#}
+
+type TestInfo {
+    id: Int!
+    name: String
+}

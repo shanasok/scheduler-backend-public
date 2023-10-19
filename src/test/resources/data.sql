@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS TestInfo;
+
+CREATE TABLE IF NOT EXISTS TestInfo (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL
+)
+
+INSERT INTO TestInfo (id, NAME) VALUES
+(1,'Test1'),
+(2,'Test1'),
+(3,'Test2')
